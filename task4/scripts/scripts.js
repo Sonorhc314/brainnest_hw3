@@ -63,16 +63,22 @@ function hierarchy_game(input1, input2) {
 }
 
 function oneRound() {
+  //----------------------------------
+  //standardize an output, ex.: RoCK, rock, roCK -> rock
   let playerSelection = prompt("Your Choice: ");
   playerSelection = playerSelection.trim().toLowerCase();
   playerSelection = capitalizeFirstLetter(playerSelection);
   let computerSelection = computerPlay();
   computerSelection = computerSelection.trim().toLowerCase();
   computerSelection = capitalizeFirstLetter(computerSelection);
+  //----------------------------------
+
   console.log(`Player1 chooses ${playerSelection}`);
   console.log(`Player2 chooses ${computerSelection}`);
+
+  //checks if player's input is valid
   if (vars.includes(playerSelection)) {
-    hierarchy_game(playerSelection, computerSelection);
+    hierarchy_game(playerSelection, computerSelection); //function to check what was beaten by what
     if (draw_flag == 1) {
       switch (player_wins) {
         case 0:
@@ -92,10 +98,13 @@ function oneRound() {
 
 function game() {
   alert(`Welcome to the game, you have 5 rounds`);
+
   for (i = 0; i < 5; i++) {
+    console.log("----------------------------------");
     console.log(`Rock, Paper, Scissors round ${i + 1}`);
-    oneRound();
+    oneRound(); //call one round fucntion iteratively
   }
+
   let winner;
   let winner_score;
   if (player_score > computer_score) {
@@ -116,4 +125,4 @@ function game() {
 }
 //----------------------------------
 
-game();
+game(); //game begins
