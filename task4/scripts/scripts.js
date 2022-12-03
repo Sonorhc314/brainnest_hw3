@@ -71,22 +71,27 @@ function oneRound() {
   computerSelection = capitalizeFirstLetter(computerSelection);
   console.log(`Player1 chooses ${playerSelection}`);
   console.log(`Player2 chooses ${computerSelection}`);
-  hierarchy_game(playerSelection, computerSelection);
-  if (draw_flag == 1) {
-    switch (player_wins) {
-      case 0:
-        console.log(`You lose! ${winner_tool} beats ${looser_tool}`);
-        break;
-      case 1:
-        console.log(`You win! ${winner_tool} beats ${looser_tool}`);
-        break;
+  if (vars.includes(playerSelection)) {
+    hierarchy_game(playerSelection, computerSelection);
+    if (draw_flag == 1) {
+      switch (player_wins) {
+        case 0:
+          console.log(`You lose! ${winner_tool} beats ${looser_tool}`);
+          break;
+        case 1:
+          console.log(`You win! ${winner_tool} beats ${looser_tool}`);
+          break;
+      }
+    } else {
+      console.log(`No one was beaten`);
     }
   } else {
-    console.log(`No one was beaten`);
+    console.log("Your input was wrong.");
   }
 }
 
 function game() {
+  alert(`Welcome to the game, you have 5 rounds`);
   for (i = 0; i < 5; i++) {
     console.log(`Rock, Paper, Scissors round ${i + 1}`);
     oneRound();
